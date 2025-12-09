@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="mn">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Миний Веб сайт — Нүүр</title>
+
+  <!-- Bootstrap CSS (CDN) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+  <!-- Google font (optional) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{ --accent:#0ea5a3; --muted:#9aa4ad; --card:#0b1116; font-family:Inter,Arial,Helvetica,sans-serif; }
+    body{ background: linear-gradient(180deg,#071021 0%, #0b1220 100%); color:#fff; }
+    /* Custom navbar style (CSS menu) */
+    .navbar-custom{ background: rgba(3,7,18,0.85); backdrop-filter: blur(6px); }
+    .nav-link{ color:#dbeafe !important; font-weight:600; }
+    .brand { font-weight:800; color:var(--accent); letter-spacing:1px; }
+
+    /* Hero banner (animated GIF or .swf not recommended, use gif/png/webm) */
+    .hero{
+      border-radius:14px;
+      overflow:hidden;
+      box-shadow: 0 10px 30px rgba(2,6,23,0.6);
+      margin-top:18px;
+    }
+    .hero img{ width:100%; height:320px; object-fit:cover; display:block; }
+
+    /* Categories grid */
+    .cards-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:18px; margin-top:18px; }
+    .cat-card{ background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-radius:12px; overflow:hidden; padding:10px; transition:transform .18s; }
+    .cat-card:hover{ transform:translateY(-6px); }
+    .cat-card img{ width:100%; height:180px; object-fit:cover; border-radius:8px; }
+
+    /* footer small icons */
+    .social a{ color:#fff; margin-right:10px; text-decoration:none; }
+
+    /* Login modal custom */
+    .modal-content{ background:#071028; color:#fff; border:0; }
+    .form-control{ background:#0b1220; border:1px solid rgba(255,255,255,0.06); color:#fff; }
+
+    /* small badge */
+    .badge-new{ background:var(--accent); color:#022; font-weight:700; }
+
+    /* details page link */
+    .read-more{ color:var(--accent); font-weight:700; text-decoration:none; }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR (CSS menu) -->
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+  <div class="container">
+    <a class="navbar-brand brand" href="index.html">МИНИЙ САЙТ</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="index.html">Нүүр</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">Тухай</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="catDrop" role="button" data-bs-toggle="dropdown">Ангилал</a>
+          <ul class="dropdown-menu">
+            <!-- 10+ ангилал -->
+            <li><a class="dropdown-item" href="category1.html">Ангилал 1</a></li>
+            <li><a class="dropdown-item" href="category2.html">Ангилал 2</a></li>
+            <li><a class="dropdown-item" href="category3.html">Ангилал 3</a></li>
+            <li><a class="dropdown-item" href="category4.html">Ангилал 4</a></li>
+            <li><a class="dropdown-item" href="category5.html">Ангилал 5</a></li>
+            <li><a class="dropdown-item" href="category6.html">Ангилал 6</a></li>
+            <li><a class="dropdown-item" href="category7.html">Ангилал 7</a></li>
+            <li><a class="dropdown-item" href="category8.html">Ангилал 8</a></li>
+            <li><a class="dropdown-item" href="category9.html">Ангилал 9</a></li>
+            <li><a class="dropdown-item" href="category10.html">Ангилал 10</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="categories.html">Бүх ангилал</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Холбоо</a></li>
+      </ul>
+
+      <div class="d-flex align-items-center">
+        <div class="me-3 text-muted small" id="today"></div>
+        <button class="btn btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#loginModal">Нэвтрэх</button>
+        <a class="btn btn-success" href="signup.html">Бүртгүүлэх</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO / ANIMATED BANNER (GIF) -->
+<div class="container">
+  <div class="hero">
+    <!-- Та өөрийн gif/animation эсвэл webm ашиглаж болно -->
+    <img src="assets/banner.gif" alt="Баннер">
+  </div>
+
+  <!-- QUICK INTRO -->
+  <div class="mt-3 p-3" style="background:rgba(255,255,255,0.02); border-radius:10px;">
+    <h2 style="margin:0">Сэдэв: Монгол комик, манга, уншигчийн нэгдсэн сан</h2>
+    <p class="text-muted">Энд та манга, комик, богино өгүүллэг, аудио, видео агуулгыг үзэж, бүртгүүлэн унших боломжтой.</p>
+  </div>
+
+  <!-- CATEGORIES / Cards grid (click хийвэл тухайн дэлгэрэнгүй хуудас руу үсэрнэ) -->
+  <h3 class="mt-4">Шилдэг ангилалууд</h3>
+  <div class="cards-grid">
+    <!-- Жишээ 12 карт (10-с дээш) -->
+    <a class="cat-card" href="b1.html">
+      <img src="Lookism.jpg" alt="Ангилал 1">
+      <h5 class="mt-2">Ангилал 1</h5>
+      <p class="text-muted small">Тайлбар богино.</p>
+      <span class="badge badge-new">Шинэ</span>
+    </a>
+
+    <a class="cat-card" href="category2.html">
+      <img src="assets/cat2.jpg" alt="Ангилал 2">
+      <h5 class="mt-2">Ангилал 2</h5>
+      <p class="text-muted small">Тайлбар богино.</p>
+    </a>
+
+    <a class="cat-card" href="category3.html">
+      <img src="assets/cat3.jpg" alt="Ангилал 3">
+      <h5 class="mt-2">Ангилал 3</h5>
+      <p class="text-muted small">Тайлбар богино.</p>
+    </a>
+
+    <a class="cat-card" href="category4.html">
+      <img src="assets/cat4.jpg" alt="Ангилал 4">
+      <h5 class="mt-2">Ангилал 4</h5>
+      <p class="text-muted small">Тайлбар богино.</p>
+    </a>
+
+    <a class="cat-card" href="category5.html">
+      <img src="assets/cat5.jpg" alt="Ангилал 5">
+      <h5 class="mt-2">Ангилал 5</h5>
+      <p class="text-muted small">Тайлбар богино.</p>
+    </a>
+
+    <a class="cat-card" href="category6.html">
+      <img src="assets/cat6.jpg" alt="Ангилал 6">
+      <h5 class="mt-2">Ангилал 6</h5>
+      <p class="text-muted small">Тайлбар богино.</p>
+    </a>
+
+    <a class="cat-card" href="category7.html">
+      <img src="assets/cat7.jpg" alt="Ангилал 7">
+      <h5 class="mt-2">Ангилал 7</h5>
+      <p class="text-muted small">Тайлбар богино.</p>
+    </a>
+
+    <a class="cat-card" href="category8.html">
+      <img src="assets/cat8.jpg" alt="Ангилал 8">
+      <h5 class="mt-2">Ангилал 8</h5>
+      <p class="text-muted small">Тайлбар богино.</p>
+    </a>
+
+    <a class="cat-card" href="category9.html">
+      <img src="assets/cat9.jpg" alt="Ангилал 9">
+      <h5 class="mt-2">Ангилал 9</h5>
+      <p class="text-muted small">Тайлбар богино.</p>
+    </a>
+
+    <a class="cat-card" href="category10.html">
+      <img src="assets/cat10.jpg" alt="Ангилал 10">
+      <h5 class="mt-2">Ангилал 10</h5>
+      <p class="text-muted small">Тайлбар богино.</p>
+    </a>
+
+    <!-- Дэмо нэмэлт -->
+    <a class="cat-card" href="category11.html">
+      <img src="assets/cat11.jpg" alt="Ангилал 11">
+      <h5 class="mt-2">Ангилал 11</h5>
+      <p class="text-muted small">Тайлбар богино.</p>
+    </a>
+
+  </div>
+
+  <!-- Видео ба дуу оруулах жишээ -->
+  <div class="row mt-4">
+    <div class="col-md-6">
+      <h5>Танилцуулга Видео</h5>
+      <video controls style="width:100%;border-radius:10px;background:#000;">
+        <source src="assets/intro.mp4" type="video/mp4">
+        Таны браузер видео тоглуулж чадахгүй.
+      </video>
+    </div>
+    <div class="col-md-6">
+      <h5>Аудио — Подкаст</h5>
+      <audio controls style="width:100%;">
+        <source src="assets/episode1.mp3" type="audio/mpeg">
+        Таны браузер аудио тоглуулж чадахгүй.
+      </audio>
+    </div>
+  </div>
+
+  <!-- Footer with facebook like link -->
+  <footer class="mt-5 py-4 text-center text-muted">
+    <div class="social mb-2">
+      <!-- Facebook page link (та өөрийн FB page ID-р солино) -->
+      <a href="https://www.facebook.com/YourPageName" target="_blank" rel="noopener">Facebook хуудас</a>
+      <a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+    <div>© <span id="year"></span> Миний сайт — Бүх эрх хуулиар хамгаалагдсан</div>
+  </footer>
+
+</div><!-- container end -->
+
+<!-- LOGIN MODAL (Нэвтрэх форм) -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content p-3">
+      <div class="modal-header border-0">
+        <h5 class="modal-title">Нэвтрэх</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <form id="loginForm">
+          <div class="mb-3">
+            <label class="form-label">Цахим шуудан</label>
+            <input type="email" class="form-control" id="email" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Нууц үг</label>
+            <input type="password" class="form-control" id="password" required>
+          </div>
+          <div class="d-flex justify-content-between align-items-center">
+            <button class="btn btn-success" type="submit">Нэвтрэх</button>
+            <a href="signup.html" class="text-muted small">Шинээр бүртгүүлэх</a>
+          </div>
+        </form>
+        <div id="loginMsg" class="mt-2 small text-warning" style="display:none;"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS (CDN) + Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Custom JS -->
+<script>
+  // 1) Өнөөдрийн огноо харуулах
+  function formatDate(d){
+    const months = ["1 сар","2 сар","3 сар","4 сар","5 сар","6 сар","7 сар","8 сар","9 сар","10 сар","11 сар","12 сар"];
+    return d.getFullYear() + " оны " + months[d.getMonth()] + " " + d.getDate() + " өдөр";
+  }
+  document.getElementById('today').textContent = formatDate(new Date());
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // 2) Нэвтрэх форм (жишээ — тухайн вэбэнд серверийн логик шаардлагатай)
+  document.getElementById('loginForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const em = document.getElementById('email').value.trim();
+    const pw = document.getElementById('password').value.trim();
+
+    // Жишээ: фронтэнд бүртгэх / токен авах гэж байгаа мэт хийж болно (реалд сервертэй ажиллана)
+    if(em === "" || pw === ""){
+      showMsg('Мэдээлэл дутуу байна.');
+      return;
+    }
+    // Симпль валидац
+    if(!em.includes('@')){ showMsg('Зөв имэйл оруулна уу.'); return; }
+
+    // Demo: localStorage ашиглан "нэвтрүүлсэн" мэт хадгална
+    localStorage.setItem('userEmail', em);
+    showMsg('Амжилттай нэвтэрлээ!', 'success');
+
+    // хаах
+    const modal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
+    setTimeout(()=> modal.hide(), 800);
+  });
+
+  function showMsg(text, type='warn'){
+    const el = document.getElementById('loginMsg');
+    el.style.display='block';
+    el.textContent = text;
+    el.style.color = type === 'success' ? '#8ef' : '#fbbf24';
+    setTimeout(()=> el.style.display='none', 2500);
+  }
+
+  // 3) Энгийн JS хөдөлгөөн - картууд дээр жижиг stagger fade-in
+  document.addEventListener('DOMContentLoaded', ()=> {
+    const cards = document.querySelectorAll('.cat-card');
+    cards.forEach((c,i)=>{
+      c.style.opacity=0;
+      c.style.transform='translateY(14px)';
+      setTimeout(()=> {
+        c.style.transition='opacity .45s ease, transform .45s ease';
+        c.style.opacity=1;
+        c.style.transform='translateY(0)';
+      }, 120 * i);
+    });
+  });
+
+</script>
+</body>
+</html>
